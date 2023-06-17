@@ -1,5 +1,5 @@
 module.exports = {
   publicPath: process.env.NODE_ENV === "production" ?
     "./" : "./",
-  outputDir: "../../../apps/vue-wallpaper/web",
+  outputDir: "../../../apps/vue-wallpaper",
 };
