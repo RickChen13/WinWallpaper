@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "等线 Light", "Microsoft Yahei Light";
+    color: #fff;
+    font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+.modules {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.modules-div {
+    position: absolute;
+    text-align: center;
+    font-family: "等线 Light", "Microsoft Yahei Light";
+    display: block;
+    opacity: 1;
+}
+
+.seconds {
+    font-size: 50%;
+}
+
+.multicolor-text {
+    display: inline-block;
+    color: transparent;
+    animation: multicolor-move 5s linear infinite;
+    background-image: linear-gradient(
+        to right top,
+        #6666ff,
+        #6699ff,
+        #66ccff,
+        #9966ff,
+        #9999ff,
+        #99ccff,
+        #99ffff,
+        #cc66ff,
+        #cc99ff,
+        #ccccff,
+        #ff66ff,
+        #ff99ff,
+        #ffccff
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+@keyframes multicolor-move {
+    from {
+        filter: hue-rotate(0);
+    }
+
+    to {
+        filter: hue-rotate(360deg);
+    }
+}

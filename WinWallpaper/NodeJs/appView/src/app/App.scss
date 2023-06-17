@@ -1,0 +1,17 @@
+* {
+    margin: 0px;
+}
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "等线 Light", "Microsoft Yahei Light";
+    font: 12px/180% Arial, Helvetica, sans-serif, "新宋体";
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+#app {
+    width: 100%;
+}

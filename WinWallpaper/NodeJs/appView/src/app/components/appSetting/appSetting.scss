@@ -1,0 +1,74 @@
+.app-setting {
+    height: 100%;
+    padding: 10px;
+    font-size: 12px;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
+    .title {
+        text-align: center;
+        padding: 10px 0px 20px 0px;
+        .name {
+            padding-bottom: 10px;
+        }
+        .image {
+            padding-top: 10px;
+        }
+    }
+    .config {
+        padding-top: 30px;
+    }
+}
+
+.setting-row {
+    padding: 0;
+    font-size: 13px;
+    display: flex;
+    width: 100%;
+    .setting-left {
+        width: 35%;
+        float: left;
+    }
+
+    .setting-right {
+        padding-left: 5px;
+        width: 65%;
+        float: right;
+        text-align: right;
+    }
+
+    .chcekbook {
+        input {
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+    .select {
+        button {
+            font-size: 13px;
+            color: #000;
+            background-color: #f5f5f5;
+        }
+        ul {
+            font-size: 13px;
+        }
+    }
+
+    .slider {
+        display: flex;
+        .range {
+            width: 70%;
+        }
+        .text {
+            padding-left: 5px;
+            width: 30%;
+            input {
+                width: 100%;
+                border: none;
+                text-align: center;
+            }
+        }
+    }
+}

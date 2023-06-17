@@ -1,0 +1,596 @@
+{
+  "file": "index.html",
+  "general": {
+    "properties": {
+      "isMobile": {
+        "order": 0.3,
+        "text": "<br/>手机模式<br/>",
+        "type": "bool",
+        "value": false
+      },
+      "imgIsRefresh": {
+        "order": 1.4,
+        "text": "<br/>图片是否随机显示<br/>",
+        "type": "bool",
+        "value": false
+      },
+      "imgLastActive": {
+        "condition": "imgIsRefresh.value == false",
+        "max": 1000,
+        "min": 0,
+        "order": 1.5,
+        "text": "<br/>默认图片<br/>",
+        "type": "slider",
+        "value": 0
+      },
+      "imgRefreshTime": {
+        "condition": "imgIsRefresh.value == true",
+        "max": 3600,
+        "min": 1,
+        "order": 1.6,
+        "text": "<br/>图片刷新时间 秒<br/>",
+        "type": "slider",
+        "value": 5
+      },
+      "line1_cX": {
+        "condition": "lineStyle.value == 1",
+        "max": 10,
+        "min": 0,
+        "order": 3.6,
+        "text": "<br/>圆中心点在x轴位置<br/>",
+        "type": "slider",
+        "value": 5
+      },
+      "line1_cY": {
+        "condition": "lineStyle.value == 1",
+        "max": 10,
+        "min": 0,
+        "order": 3.7,
+        "text": "<br/>圆中心点在y轴位置<br/>",
+        "type": "slider",
+        "value": 5
+      },
+      "line1_r": {
+        "condition": "lineStyle.value == 1",
+        "max": 10,
+        "min": 1,
+        "order": 3.4,
+        "text": "<br/>圆的半径<br/>",
+        "type": "slider",
+        "value": 7
+      },
+      "line1_range": {
+        "condition": "lineStyle.value == 1",
+        "max": 10,
+        "min": 0,
+        "order": 3.8,
+        "text": "<br/>振幅<br/>",
+        "type": "slider",
+        "value": 3
+      },
+      "line1_rotation": {
+        "condition": "lineStyle.value == 1",
+        "max": 10,
+        "min": 0,
+        "order": 3.5,
+        "text": "<br/>旋转速度<br/>",
+        "type": "slider",
+        "value": 8
+      },
+      "line2_range": {
+        "condition": "lineStyle.value == 2",
+        "max": 10,
+        "min": 0,
+        "order": 4.4,
+        "text": "<br/>振幅<br/>",
+        "type": "slider",
+        "value": 3
+      },
+      "line2_startY": {
+        "condition": "lineStyle.value == 2",
+        "max": 10800,
+        "min": 0,
+        "order": 4.6,
+        "text": "<br/>Y轴 px<br/>",
+        "type": "slider",
+        "value": 1000
+      },
+      "line2_width": {
+        "condition": "lineStyle.value == 2",
+        "max": 100,
+        "min": 0,
+        "order": 4.5,
+        "text": "<br/>宽 %<br/>",
+        "type": "slider",
+        "value": 80
+      },
+      "lineColor": {
+        "condition": "lineStyle.value != 0 && lineMulticolor.value == false && lineColorFollow.value == false",
+        "order": 2.4,
+        "text": "<br/>颜色<br/>",
+        "type": "color",
+        "value": "#ffffff"
+      },
+      "lineColorFollow": {
+        "condition": "lineStyle.value != 0 && lineMulticolor.value == false",
+        "order": 2.3,
+        "text": "<br/>跟随主配色<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "lineMulticolor": {
+        "condition": "lineStyle.value != 0",
+        "order": 2.2,
+        "text": "<br/>开启彩色<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "lineStyle": {
+        "options": [
+          {
+            "label": "无",
+            "value": 0
+          },
+          {
+            "label": "圆环",
+            "value": 1
+          },
+          {
+            "label": "直线",
+            "value": 2
+          }
+        ],
+        "order": 2.1,
+        "text": "音频模板",
+        "type": "combo",
+        "value": 2
+      },
+      "modulesMulticolor": {
+        "order": 5.1,
+        "text": "<br/>开启彩色文字<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "modules_city": {
+        "condition": "modules_weatherShow.value == true",
+        "order": 8.8,
+        "text": "<br/>天气城市<br/>",
+        "type": "textinput",
+        "value": "广州"
+      },
+      "modules_date": {
+        "order": 7,
+        "text": "<br/><h4>日期设置</h4>",
+        "type": "text"
+      },
+      "modules_dateFontSize": {
+        "condition": "modules_dateShow.value == true",
+        "max": 256,
+        "min": 12,
+        "order": 7.6,
+        "text": "<br/>日期字体大小 px<br/>",
+        "type": "slider",
+        "value": 18
+      },
+      "modules_dateShow": {
+        "order": 7.1,
+        "text": "<br/>日期显示<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "modules_dateX": {
+        "condition": "modules_dateShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 7.7,
+        "text": "<br/>日期x轴位置 %<br/>",
+        "type": "slider",
+        "value": 90
+      },
+      "modules_dateY": {
+        "condition": "modules_dateShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 7.8,
+        "text": "<br/>日期y轴位置 %<br/>",
+        "type": "slider",
+        "value": 84
+      },
+      "modules_gzDate": {
+        "order": 7.9,
+        "text": "<br/><h4>农历设置</h4>",
+        "type": "text"
+      },
+      "modules_gzDateFontSize": {
+        "condition": "modules_gzDateShow.value == true",
+        "max": 256,
+        "min": 12,
+        "order": 7.92,
+        "text": "<br/>农历字体大小 px<br/>",
+        "type": "slider",
+        "value": 18
+      },
+      "modules_gzDateShow": {
+        "order": 7.91,
+        "text": "<br/>农历显示<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "modules_gzDateX": {
+        "condition": "modules_gzDateShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 7.93,
+        "text": "<br/>农历x轴位置 %<br/>",
+        "type": "slider",
+        "value": 90
+      },
+      "modules_gzDateY": {
+        "condition": "modules_gzDateShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 7.94,
+        "text": "<br/>农历y轴位置 %<br/>",
+        "type": "slider",
+        "value": 78
+      },
+      "modules_lunar": {
+        "order": 7.81,
+        "text": "<br/><h4>天干地支设置</h4>",
+        "type": "text"
+      },
+      "modules_lunarFontSize": {
+        "condition": "modules_lunarShow.value == true",
+        "max": 256,
+        "min": 12,
+        "order": 7.83,
+        "text": "<br/>天干地支字体大小 px<br/>",
+        "type": "slider",
+        "value": 18
+      },
+      "modules_lunarShow": {
+        "order": 7.82,
+        "text": "<br/>天干地支显示<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "modules_lunarX": {
+        "condition": "modules_lunarShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 7.84,
+        "text": "<br/>天干地支x轴位置 %<br/>",
+        "type": "slider",
+        "value": 90
+      },
+      "modules_lunarY": {
+        "condition": "modules_lunarShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 7.85,
+        "text": "<br/>天干地支y轴位置 %<br/>",
+        "type": "slider",
+        "value": 81
+      },
+      "modules_time": {
+        "order": 6,
+        "text": "<br/><h4>时间设置</h4>",
+        "type": "text"
+      },
+      "modules_timeFontSize": {
+        "condition": "modules_timeShow.value == true",
+        "max": 256,
+        "min": 12,
+        "order": 6.5,
+        "text": "<br/>时间字体大小 px<br/>",
+        "type": "slider",
+        "value": 65
+      },
+      "modules_timeShow": {
+        "order": 6.1,
+        "text": "<br/>时间显示<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "modules_timeX": {
+        "condition": "modules_timeShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 6.6,
+        "text": "<br/>时间x轴位置 %<br/>",
+        "type": "slider",
+        "value": 90
+      },
+      "modules_timeY": {
+        "condition": "modules_timeShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 6.7,
+        "text": "<br/>时间y轴位置 %<br/>",
+        "type": "slider",
+        "value": 90
+      },
+      "modules_weather": {
+        "order": 8,
+        "text": "<br/><h4>天气设置</h4>",
+        "type": "text"
+      },
+      "modules_weatherFontSize": {
+        "condition": "modules_weatherShow.value == true",
+        "max": 256,
+        "min": 12,
+        "order": 8.5,
+        "text": "<br/>天气字体大小 px<br/>",
+        "type": "slider",
+        "value": 18
+      },
+      "modules_weatherRefresh": {
+        "condition": "modules_weatherShow.value == true",
+        "max": 43200,
+        "min": 900,
+        "order": 8.81,
+        "text": "<br/>天气刷新间隔 秒<br/>",
+        "type": "slider",
+        "value": 18000
+      },
+      "modules_weatherShow": {
+        "order": 8.1,
+        "text": "<br/>天气显示<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "modules_weatherX": {
+        "condition": "modules_weatherShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 8.6,
+        "text": "<br/>天气x轴位置 %<br/>",
+        "type": "slider",
+        "value": 90
+      },
+      "modules_weatherY": {
+        "condition": "modules_weatherShow.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 8.7,
+        "text": "<br/>天气y轴位置 %<br/>",
+        "type": "slider",
+        "value": 75
+      },
+      "monitroMulticolor": {
+        "condition": "monitro_show.value == true",
+        "order": 9.11,
+        "text": "<br/>开启彩色文字<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "monitro_fontSize": {
+        "condition": "monitro_show.value == true",
+        "max": 256,
+        "min": 12,
+        "order": 9.2,
+        "text": "<br/>字体大小 px<br/>",
+        "type": "slider",
+        "value": 12
+      },
+      "monitro_show": {
+        "order": 9.1,
+        "text": "<br/>显示<br/>",
+        "type": "bool",
+        "value": true
+      },
+      "monitro_text": {
+        "order": 9,
+        "text": "<br/><h3>系统资源设置</h3><br/>",
+        "type": "text"
+      },
+      "monitro_x": {
+        "condition": "monitro_show.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 9.3,
+        "text": "<br/>x轴位置 %<br/>",
+        "type": "slider",
+        "value": 90
+      },
+      "monitro_y": {
+        "condition": "monitro_show.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 9.4,
+        "text": "<br/>y轴位置 %<br/>",
+        "type": "slider",
+        "value": 71
+      },
+      "schemecolor_color": {
+        "condition": "schemecolor_bool.value == false",
+        "order": 0.2,
+        "text": "<br/>主配色<br/>",
+        "type": "color",
+        "value": "#ffffff"
+      },
+      "text_img": {
+        "order": 1,
+        "text": "<br/><h3>图片选项</h3><br/>",
+        "type": "text"
+      },
+      "text_line": {
+        "order": 2,
+        "text": "<br/><h3>可视化音频</h3><br/>",
+        "type": "text"
+      },
+      "text_line1": {
+        "condition": "lineStyle.value == 1",
+        "order": 3,
+        "text": "<br/><h4>圆环设置</h4><br/>",
+        "type": "text"
+      },
+      "text_line2": {
+        "condition": "lineStyle.value == 2",
+        "order": 4,
+        "text": "<br/><h4>直线设置</h4><br/>",
+        "type": "text"
+      },
+      "text_modules": {
+        "order": 5,
+        "text": "<br/><h3>时间、日期、天气设置</h3><br/>",
+        "type": "text"
+      },
+      "doublePY_text": {
+        "order": 10,
+        "text": "<br/><h3>双拼提示</h3><br/>",
+        "type": "text"
+      },
+      "doublePY_show": {
+        "order": 10.1,
+        "text": "<br/>显示<br/>",
+        "type": "bool",
+        "value": false
+      },
+      "doublePY_x": {
+        "condition": "doublePY_show.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 10.2,
+        "text": "<br/>x轴位置 %<br/>",
+        "type": "slider",
+        "value": 2
+      },
+      "doublePY_y": {
+        "condition": "doublePY_show.value == true",
+        "max": 100,
+        "min": 0,
+        "order": 10.3,
+        "text": "<br/>y轴位置 %<br/>",
+        "type": "slider",
+        "value": 92
+      },
+      "doublePY_leftStyle": {
+        "condition": "doublePY_show.value == true",
+        "order": 10.4,
+        "text": "<br/>左字颜色<br/>",
+        "type": "color",
+        "value": "#6e6e6e"
+      },
+      "doublePY_rightStyle": {
+        "condition": "doublePY_show.value == true",
+        "order": 10.5,
+        "text": "<br/>右字颜色<br/>",
+        "type": "color",
+        "value": "#fff"
+      },
+      "doublePY_type": {
+        "condition": "doublePY_show.value == true",
+        "options": [
+          {
+            "label": "微软双拼",
+            "value": 0
+          }
+        ],
+        "order": 10.11,
+        "text": "输入法类型",
+        "type": "combo",
+        "value": 0
+      },
+      "musicPlayer": {
+        "order": 11,
+        "text": "<h3>音乐播放器</h3>",
+        "type": "text"
+      },
+      "musicPlayer_show": {
+        "order": 11.1,
+        "text": "显示",
+        "type": "bool",
+        "value": false
+      },
+      "musicPlayer_Root": {
+        "order": 11.11,
+        "condition": "musicPlayer_show.value == true",
+        "text": "音乐播放器根目录",
+        "type": "textinput",
+        "value": "D:\\Music"
+      },
+      "musicPlayer_x": {
+        "order": 11.2,
+        "condition": "musicPlayer_show.value == true",
+        "text": "x轴位置 %",
+        "type": "slider",
+        "max": 100,
+        "min": 0,
+        "value": 82
+      },
+      "musicPlayer_y": {
+        "order": 11.3,
+        "condition": "musicPlayer_show.value == true",
+        "text": "y轴位置 %",
+        "type": "slider",
+        "max": 100,
+        "min": 0,
+        "value": 40
+      },
+      "netWorkSpeekMonitor": {
+        "order": 12,
+        "text": "<h3>网速监控</h3>",
+        "type": "text"
+      },
+      "netWorkSpeekMonitor_show": {
+        "order": 12.1,
+        "text": "显示",
+        "type": "bool",
+        "value": true
+      },
+      "netWorkSpeekMonitor_multicolor": {
+        "order": 12.2,
+        "text": "彩色文字",
+        "condition": "netWorkSpeekMonitor_show.value == true",
+        "type": "bool",
+        "value": true
+      },
+      "netWorkSpeekMonitor_x": {
+        "order": 12.3,
+        "text": "x轴位置 %",
+        "condition": "netWorkSpeekMonitor_show.value == true",
+        "type": "slider",
+        "max": 100,
+        "min": 0,
+        "value": 90
+      },
+      "netWorkSpeekMonitor_y": {
+        "order": 12.4,
+        "text": "y轴位置 %",
+        "condition": "netWorkSpeekMonitor_show.value == true",
+        "type": "slider",
+        "max": 100,
+        "min": 0,
+        "value": 75
+      },
+      "netWorkSpeekMonitor_fontSize": {
+        "order": 12.5,
+        "condition": "netWorkSpeekMonitor_show.value == true",
+        "text": "字体大小 px",
+        "type": "slider",
+        "max": 256,
+        "min": 12,
+        "value": 14
+      },
+      "websocket": {
+        "order": 13,
+        "text": "<h3>websocket</h3>",
+        "type": "text"
+      },
+      "webSocketPort": {
+        "order": 13.1,
+        "text": "websocket 端口号",
+        "type": "slider",
+        "max": 65536,
+        "min": 1,
+        "value": 9999
+      }
+    },
+    "supportsaudioprocessing": true
+  },
+  "preview": "preview.jpg",
+  "title": "we-web",
+  "type": "Web",
+  "version": "0.0.1"
+}
