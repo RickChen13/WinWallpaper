@@ -67,7 +67,7 @@ class Component extends BaseViews {
               refreshTime: 5,
               lastActive: "0",
               //是否更换图片
-              isRefresh: true,
+              isRefresh: false,
             },
             audioCanvas: {
               lineStyle: 2,
@@ -164,17 +164,17 @@ class Component extends BaseViews {
               rightStyle: "#ffffffcc",
             },
             musicPlayer: {
-              show: false,
-              x: 50,
+              show: true,
+              x: 82,
               y: 40,
-              rootDir: "D:\\Music",
+              rootDir: "E:\\Music",
             },
             netWorkSpeekMonitor: {
               show: true,
               multicolor: false,
-              x: 82,
-              y: 40,
-              fontSize: 18,
+              x: 90,
+              y: 73,
+              fontSize: 12,
             },
             websocket: {
               webSocketPort: "9999",
@@ -182,7 +182,7 @@ class Component extends BaseViews {
           },
         };
       },
-      created() {},
+      created() { },
       mounted() {
         this.wallpaperPropertyListener();
       },
@@ -655,7 +655,6 @@ class Component extends BaseViews {
               }
             },
           };
-          window.wallpaperPropertyListener.applyUserProperties(this.params);
         },
 
         /**

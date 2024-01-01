@@ -30,4 +30,4 @@ window.backgroundConfig = {
         { class: "", path: "./images/mobile/11.png" },
         { class: "", path: "./images/mobile/12.png" },
     ],
-}
+};
