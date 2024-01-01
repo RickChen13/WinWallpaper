@@ -52,7 +52,7 @@ class Component extends BaseViews {
           lastActive: 55,
         };
       },
-      created() {},
+      created() { },
       methods: {
         /**
          * 加载完成dom后执行的函数(供外部使用)
@@ -121,7 +121,6 @@ class Component extends BaseViews {
           }
         },
         load(bool: boolean) {
-          console.log("bool", bool);
           if (!bool) {
             this.showListcClassChange();
           }
