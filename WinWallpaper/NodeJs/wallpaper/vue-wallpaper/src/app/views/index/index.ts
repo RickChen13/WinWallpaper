@@ -186,7 +186,7 @@ class Component extends BaseViews {
           this.dealWithUserConfig(userParams);
         };
       },
-      mounted() {},
+      mounted() { },
       methods: {
         init(arr: UserParams) {
           this.initUserConfigArr = arr;
@@ -210,8 +210,6 @@ class Component extends BaseViews {
             this.repeat();
           }, 1000);
         },
-
-        async wallpaperPropertyListener() {},
         dealWithUserConfig(userParams: UserParams) {
           //#region 公共代码块
           // 非首次加载执行 window.func.modules.loading_datetime();
