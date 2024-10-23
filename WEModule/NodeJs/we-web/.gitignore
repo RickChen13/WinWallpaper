@@ -27,5 +27,5 @@ coverage
 *.sln
 *.sw?
 
-/src/common
-/src/fast
+./src/common
+./src/fast
