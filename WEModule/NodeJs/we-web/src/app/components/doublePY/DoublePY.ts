@@ -9,7 +9,6 @@ class Component extends BaseViews {
 
   public vue() {
     const vue = defineComponent({
-      name: "DoublePY",
       setup() {
         let params: any = inject("params");
         const proxy = getCurrentInstance();
@@ -28,7 +27,7 @@ class Component extends BaseViews {
           data: data,
         };
       },
-      created() {},
+      created() { },
       methods: {
         init() {
           this.setStyle();

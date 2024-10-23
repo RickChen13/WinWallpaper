@@ -3,11 +3,11 @@
 </template>
 
 <script lang="ts">
-import Component from "@/app/components/audioCanvas/AudioCanvas";
+import Component from "./AudioCanvas";
 const components = new Component();
 export default components.vue();
 </script>
 
 <style lang="scss" scoped>
-@import "@/app/components/audioCanvas/AudioCanvas.scss";
+@use "./AudioCanvas.scss";
 </style>

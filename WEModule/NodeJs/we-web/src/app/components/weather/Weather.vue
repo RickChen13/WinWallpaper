@@ -7,11 +7,11 @@
 </template>
 
 <script lang="ts">
-import Component from "@/app/components/weather/Weather";
+import Component from "./Weather";
 const components = new Component();
 export default components.vue();
 </script>
 
 <style lang="scss" scoped>
-@import "@/app/components/weather/Weather.scss";
+@use "./Weather.scss";
 </style>

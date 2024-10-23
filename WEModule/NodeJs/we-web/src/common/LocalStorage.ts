@@ -1,33 +1,37 @@
 class LocalStorage {
     /**
      * 设置LocalStorage
-     * 
-     * @param cname 
-     * @param cvalue  
+     *
+     * @param cname
+     * @param cvalue
      */
-    static setLocalStorage(cname: string, cvalue: string) {
-        let result = true
+    static setLocalStorage(cname: string, cvalue: string): boolean {
+        let result = true;
         try {
-            localStorage.setItem(cname, cvalue)
+            localStorage.setItem(cname, cvalue);
         } catch (error) {
-            result = false
+            result = false;
         }
-        return result
+        return result;
     }
 
     /**
      * 获取LocalStorage
+     *
+     * @param cname
+     */
+    static getLocalStorage(cname: string): string | null {
+        return localStorage.getItem(cname);
+    }
+
+    /**
+     * 移除一个对象
      * 
      * @param cname 
      */
-    static getLocalStorage(cname: string) {
-        let result = ""
-        const cvalue = localStorage.getItem(cname)
-        if (cvalue != null) {
-            result = cvalue
-        }
-        return result
+    static remove(cname: string) {
+        localStorage.removeItem(cname);
     }
 }
 
-export default LocalStorage
+export default LocalStorage;

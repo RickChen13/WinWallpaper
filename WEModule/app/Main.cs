@@ -24,7 +24,7 @@ namespace WEModule.app
                 Monitor();
             });
             task.Start();
-            Ws = new Ws("ws://0.0.0.0:9999");
+            Ws = new Ws("ws://127.0.0.1:9999");
             Ws.SubEvent();
             EventBus.AppExit.Add(App_Exit);
         }

@@ -9,7 +9,6 @@ class Component extends BaseViews {
 
   public vue() {
     const vue = defineComponent({
-      name: "Date",
       setup() {
         const proxy = getCurrentInstance();
         let calendar = new Calendar();
@@ -44,8 +43,8 @@ class Component extends BaseViews {
           timeStyle: "",
         };
       },
-      created() {},
-      mounted() {},
+      created() { },
+      mounted() { },
       methods: {
         /**
          * 加载日期时间(供外部使用)

@@ -1,4 +1,4 @@
-import EventBus from "@/fast/plugins/mitt/EventBus";
+import { useEventBus } from "@/app/plugins/mitt/EventBus";
 
 class Monitor {
   isOnline = false;
@@ -13,41 +13,55 @@ class Monitor {
   }
 
   private setEvent() {
-    EventBus.on("music-list-send", (data) => {
-      let msg = {
-        type: "music-list",
-        data: data.path,
-      };
-      this.send(msg);
+    useEventBus({
+      name: "music-list-send", callback: (data) => {
+        let msg = {
+          type: "music-list",
+          data: data.path,
+        };
+        this.send(msg);
+      }
     });
-    EventBus.on("music-init-send", (data) => {
-      let msg = {
-        type: "music-init",
-        data: data.musicPath,
-      };
-      this.send(msg);
+
+    useEventBus({
+      name: "music-init-send", callback: (data) => {
+        let msg = {
+          type: "music-init",
+          data: data.musicPath,
+        };
+        this.send(msg);
+      }
     });
-    EventBus.on("music-play-send", () => {
-      let msg = {
-        type: "music-play",
-        data: "",
-      };
-      this.send(msg);
+
+    useEventBus({
+      name: "music-play-send", callback: () => {
+        let msg = {
+          type: "music-play",
+          data: "",
+        };
+        this.send(msg);
+      }
     });
-    EventBus.on("music-stop-send", () => {
-      let msg = {
-        type: "music-stop",
-        data: "",
-      };
-      this.send(msg);
+    useEventBus({
+      name: "music-stop-send", callback: () => {
+        let msg = {
+          type: "music-stop",
+          data: "",
+        };
+        this.send(msg);
+      }
     });
-    EventBus.on("music-pause-send", () => {
-      let msg = {
-        type: "music-pause",
-        data: "",
-      };
-      this.send(msg);
+    useEventBus({
+      name: "music-pause-send", callback: () => {
+        let msg = {
+          type: "music-pause",
+          data: "",
+        };
+        this.send(msg);
+      }
     });
+
+
   }
 
   send(msg: any) {
@@ -59,20 +73,20 @@ class Monitor {
   start(port?: string) {
     this.port = port ? port : this.port;
     this.ws = new WebSocket(`ws://127.0.0.1:${this.port}`);
-    this.ws.onopen = (event) => {
-      this.onOpen(event);
+    this.ws.onopen = () => {
+      this.onOpen();
     };
 
     this.ws.onmessage = (message) => {
       this.onMessage(message);
     };
 
-    this.ws.onclose = (event) => {
-      this.onclose(event);
+    this.ws.onclose = () => {
+      this.onclose();
     };
 
-    this.ws.onerror = (error) => {
-      this.onError(error);
+    this.ws.onerror = () => {
+      this.onError();
     };
   }
 
@@ -92,7 +106,7 @@ class Monitor {
     this.start(port);
   }
 
-  private onOpen(event: Event) {
+  private onOpen() {
     this.isOnline = true;
   }
 
@@ -102,48 +116,48 @@ class Monitor {
     switch (msg.type) {
       case "openHardware":
         msg.data = JSON.parse(msg.data);
-        EventBus.emit("openHardware", msg.data);
+        useEventBus().emit("openHardware", msg.data);
         break;
       case "netWork":
         msg.data = JSON.parse(msg.data);
-        EventBus.emit("netWork", msg.data);
+        useEventBus().emit("netWork", msg.data);
         break;
       case "audio":
         msg.data = JSON.parse(msg.data);
-        EventBus.emit("audio", msg.data);
+        useEventBus().emit("audio", msg.data);
         break;
       case "music-list":
         msg.data = JSON.parse(msg.data);
         msg.data.dir = JSON.parse(msg.data.dir);
         msg.data.music = JSON.parse(msg.data.music);
-        EventBus.emit("music-list-get", msg.data);
+        useEventBus().emit("music-list-get", msg.data);
         break;
       case "music-init":
         msg.data = JSON.parse(msg.data);
-        EventBus.emit("music-init-get", msg.data);
+        useEventBus().emit("music-init-get", msg.data);
         break;
       case "music-play":
         msg.data = JSON.parse(msg.data);
-        EventBus.emit("music-play-get", msg.data);
+        useEventBus().emit("music-play-get", msg.data);
         break;
       case "music-stop":
-        EventBus.emit("music-stop-get");
+        useEventBus().emit("music-stop-get");
         break;
       case "music-pause":
-        EventBus.emit("music-pause-get");
+        useEventBus().emit("music-pause-get");
         break;
       case "MusicPositionTime":
         msg.data = JSON.parse(msg.data);
-        EventBus.emit("MusicPositionTime", msg.data);
+        useEventBus().emit("MusicPositionTime", msg.data);
         break;
       case "MusicDone":
-        EventBus.emit("MusicDone");
+        useEventBus().emit("MusicDone");
         break;
       case "ws-sub":
-        EventBus.emit("ws-sub");
+        useEventBus().emit("ws-sub");
         break;
       case "ws-unsub":
-        EventBus.emit("ws-unsub");
+        useEventBus().emit("ws-unsub");
         break;
       case "error":
         console.log("error", msg.data);
@@ -154,14 +168,14 @@ class Monitor {
     }
   }
 
-  private onclose(event: CloseEvent) {
+  private onclose() {
     this.needReconnection = true;
     setTimeout(() => {
       this.reconnection();
     }, Math.ceil(Math.random() * 10));
   }
 
-  private onError(error: Event) {
+  private onError() {
     this.needReconnection = true;
     setTimeout(() => {
       this.reconnection();

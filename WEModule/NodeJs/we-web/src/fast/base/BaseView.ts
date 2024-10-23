@@ -2,4 +2,4 @@ abstract class BaseViews {
     constructor() { }
 }
 
-export default BaseViews
+export default BaseViews;

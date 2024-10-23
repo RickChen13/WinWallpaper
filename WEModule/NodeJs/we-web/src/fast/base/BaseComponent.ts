@@ -1,4 +1,4 @@
 abstract class BaseComponent {
     constructor() { }
 }
-export default BaseComponent
+export default BaseComponent;

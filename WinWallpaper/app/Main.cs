@@ -25,7 +25,7 @@ namespace WinWallpaper.app
                 Monitor();
             });
             task.Start();
-            EventBus.AppExit.Add( App_Exit);
+            EventBus.AppExit.Add(App_Exit);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new applacation.main.Main());

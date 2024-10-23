@@ -1,12 +1,19 @@
-import { createApp } from "vue";
-import App from "./app/App.vue";
-import router from "./app/router";
-import store from "./app/store";
-
-import "bootstrap-icons/font/bootstrap-icons.scss";
-
+import { createApp } from 'vue';
+import App from '@/app/App.vue';
 const app = createApp(App);
-app.use(store);
+
+import router from '@/app/router';
 app.use(router);
 
-app.mount("#app");
+import { createPinia } from 'pinia';
+app.use(createPinia());
+
+import ElementPlus from 'element-plus';
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import 'element-plus/dist/index.css';
+app.use(ElementPlus, {
+    locale: zhCn
+});
+
+app.mount('#app');
+

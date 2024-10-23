@@ -9,7 +9,6 @@ class Component extends BaseViews {
 
   public vue() {
     const vue = defineComponent({
-      name: "Background",
       setup() {
         let params: any = inject("params");
         return {
@@ -41,7 +40,7 @@ class Component extends BaseViews {
           lastActive: 55,
         };
       },
-      created() {},
+      created() { },
       methods: {
         /**
          * 加载完成dom后执行的函数(供外部使用)

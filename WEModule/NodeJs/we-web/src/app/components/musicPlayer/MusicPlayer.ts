@@ -1,8 +1,6 @@
 import BaseViews from "@/fast/base/BaseView";
-import EventBus, {
-  MusicPlayType,
-  MusicListType,
-} from "@/fast/plugins/mitt/EventBus";
+import { useEventBus } from "@/app/plugins/mitt/EventBus";
+import type { MusicPlayType, MusicListType } from "@/app/plugins/mitt/EventBus";
 import { defineComponent, inject, nextTick } from "vue";
 
 class Component extends BaseViews {
@@ -89,15 +87,16 @@ class Component extends BaseViews {
         };
       },
       created() {
-        EventBus.on("music-list-get", this.musicListGet);
-        EventBus.on("music-init-get", this.musicInitGet);
-        EventBus.on("music-play-get", this.musicPlayGet);
-        EventBus.on("music-pause-get", this.musicPauseGet);
-        EventBus.on("music-stop-get", this.musicStopGet);
-        EventBus.on("MusicPositionTime", this.MusicPositionTime);
-        EventBus.on("MusicDone", this.MusicDone);
-        EventBus.on("ws-sub", this.init);
-        EventBus.on("ws-unsub", this.wsUnsub);
+        useEventBus({ name: "music-list-get", callback: this.musicListGet });
+        useEventBus({ name: "music-init-get", callback: this.musicInitGet });
+        useEventBus({ name: "music-play-get", callback: this.musicPlayGet });
+        useEventBus({ name: "music-pause-get", callback: this.musicPauseGet });
+        useEventBus({ name: "music-stop-get", callback: this.musicStopGet });
+        useEventBus({ name: "MusicPositionTime", callback: this.MusicPositionTime });
+        useEventBus({ name: "MusicDone", callback: this.MusicDone });
+        useEventBus({ name: "ws-sub", callback: this.init });
+        useEventBus({ name: "ws-unsub", callback: this.wsUnsub });
+
       },
       methods: {
         //#region init相关
@@ -117,7 +116,7 @@ class Component extends BaseViews {
          * 设置初始参数
          */
         setInitParams() {
-          EventBus.emit("music-stop-send");
+          useEventBus().emit("music-stop-send");
         },
         /**
          * 跳转到指定目录
@@ -126,7 +125,7 @@ class Component extends BaseViews {
         async goto(dir: string) {
           this.gotoDir = dir;
           this.setStyle();
-          EventBus.emit("music-list-send", { path: dir });
+          useEventBus().emit("music-list-send", { path: dir });
         },
         //#endregion
 
@@ -196,7 +195,7 @@ class Component extends BaseViews {
             this.filesParams.activeIndex = index;
           }
         },
-        filesListMousedown(index: number) {
+        filesListMousedown() {
           this.filesParams.mouseLock = true;
           this.filesParams.mouseTimer = setTimeout(() => {
             if (this.filesParams.mouseLock) {
@@ -346,7 +345,7 @@ class Component extends BaseViews {
         addPlaySong() {
           this.musicName = this.playList[this.index].name;
           this.playList[this.index].class = "music-active";
-          EventBus.emit("music-init-send", {
+          useEventBus().emit("music-init-send", {
             musicPath: this.playList[this.index].src,
           });
         },
@@ -358,7 +357,7 @@ class Component extends BaseViews {
             if (this.loadIndex != this.index) {
               this.loadingPlay();
             } else {
-              EventBus.emit("music-play-send");
+              useEventBus().emit("music-play-send");
             }
           }
         },
@@ -366,7 +365,7 @@ class Component extends BaseViews {
          * 停止播放音乐
          */
         pause() {
-          EventBus.emit("music-pause-send");
+          useEventBus().emit("music-pause-send");
         },
         /**
          * 下一首

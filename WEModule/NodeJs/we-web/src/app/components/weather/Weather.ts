@@ -10,7 +10,6 @@ class Component extends BaseViews {
 
   public vue() {
     const vue = defineComponent({
-      name: "Weather",
       setup() {
         const proxy = getCurrentInstance();
         const weatherApi = new WeatherController();
@@ -98,7 +97,6 @@ class Component extends BaseViews {
             data: {
               city: this.params.weather.city,
             },
-            chain: true,
           });
           if (res.result) {
             let data = res.data;

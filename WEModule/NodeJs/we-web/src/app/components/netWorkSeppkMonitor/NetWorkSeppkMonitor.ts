@@ -1,7 +1,7 @@
 import BaseViews from "@/fast/base/BaseView";
 import { defineComponent, inject } from "vue";
-import EventBus from "@/fast/plugins/mitt/EventBus";
-interface NetWorkSpeedData {
+import { useEventBus } from "@/app/plugins/mitt/EventBus";
+type NetWorkSpeedData = {
   /// <summary>
   /// 网络类型
   /// </summary>
@@ -30,7 +30,6 @@ class Component extends BaseViews {
 
   public vue() {
     const vue = defineComponent({
-      name: "NetWorkSpeekMonitor",
       setup() {
         let params: any = inject("params");
         return {
@@ -46,10 +45,10 @@ class Component extends BaseViews {
           rec: "",
         };
       },
-      created() {},
+      created() { },
       mounted() {
-        EventBus.on("netWork", this.repeat);
-        EventBus.on("ws-unsub", this.wsUnsub);
+        useEventBus({ name: "netWork", callback: this.repeat });
+        useEventBus({ name: "ws-unsub", callback: this.wsUnsub });
       },
       methods: {
         wsUnsub() {
@@ -82,8 +81,8 @@ class Component extends BaseViews {
                   top: ${50 - array.y}%;`;
         },
 
-        async start() {},
-        async stop() {},
+        async start() { },
+        async stop() { },
 
         async repeat(data: any) {
           this.RWallpaperNetWork(data);

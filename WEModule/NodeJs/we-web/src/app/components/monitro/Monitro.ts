@@ -1,6 +1,6 @@
 import BaseViews from "@/fast/base/BaseView";
 import { defineComponent, getCurrentInstance, inject } from "vue";
-import EventBus from "@/fast/plugins/mitt/EventBus";
+import { useEventBus } from "@/app/plugins/mitt/EventBus";
 
 class Component extends BaseViews {
   constructor() {
@@ -9,7 +9,6 @@ class Component extends BaseViews {
 
   public vue() {
     const vue = defineComponent({
-      name: "Monitro",
       setup() {
         const proxy = getCurrentInstance();
         let params: any = inject("params");
@@ -36,10 +35,10 @@ class Component extends BaseViews {
           hddStyle: "",
         };
       },
-      created() {},
+      created() { },
       mounted() {
-        EventBus.on("openHardware", this.repeat);
-        EventBus.on("ws-unsub", this.wsUnsub);
+        useEventBus({ name: "openHardware", callback: this.repeat });
+        useEventBus({ name: "ws-unsub", callback: this.wsUnsub });
       },
       methods: {
         init() {
@@ -184,12 +183,12 @@ class Component extends BaseViews {
     return vue;
   }
 }
-interface DataInfo {
+type DataInfo = {
   Name: string;
-  Value: string;
+  Value: number;
 }
 
-interface Data {
+type Data = {
   CpuUsed: DataInfo[];
   CpuPower: DataInfo[];
   CpuTemperature: DataInfo[];
@@ -198,14 +197,14 @@ interface Data {
   HddUsed: DataInfo[];
 }
 
-interface CpuInfo {
+type CpuInfo = {
   Name: string;
-  Use: Number;
-  Temperature: Number;
-  Power: Number;
+  Use: number;
+  Temperature: number;
+  Power: number;
 }
 
-interface StyleData {
+type StyleData = {
   width: number;
   height: number;
   fontSize: number;

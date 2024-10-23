@@ -1,10 +1,5 @@
 <template>
-  <div
-    class="modules"
-    v-show="params.musicPlayer.show"
-    id="musicPlayer"
-    style="z-index: 999; pointer-events: unset"
-  >
+  <div class="modules" v-show="params.musicPlayer.show" id="musicPlayer" style="z-index: 999; pointer-events: unset">
     <div class="modules-div music-main" :style="mpStyle">
       <div class="container">
         <div class="audio">
@@ -54,11 +49,7 @@
             </template>
 
             <template v-for="(item, i) in files" :key="i">
-              <li
-                @mousedown="filesListMousedown()"
-                @mouseup="filesListMouseup(i)"
-                :title="item.name"
-              >
+              <li @mousedown="filesListMousedown()" @mouseup="filesListMouseup(i)" :title="item.name">
                 <span v-html="item.name"></span>
               </li>
             </template>
@@ -68,13 +59,8 @@
         <div v-show="playListShow">
           <ul class="music-list">
             <template v-for="(item, i) in playList" :key="i">
-              <li
-                :class="item.class"
-                @mousedown="playListMousedown(i)"
-                @mouseup="playListMouseup(i)"
-                :title="item.name"
-                :id="`music-${i}`"
-              >
+              <li :class="item.class" @mousedown="playListMousedown()" @mouseup="playListMouseup(i)" :title="item.name"
+                :id="`music-${i}`">
                 <span v-html="item.name"></span>
               </li>
             </template>
@@ -86,11 +72,11 @@
 </template>
 
 <script lang="ts">
-import Component from "@/app/components/musicPlayer/MusicPlayer";
+import Component from "./MusicPlayer";
 const components = new Component();
 export default components.vue();
 </script>
 
 <style lang="scss" scoped>
-@import "@/app/components/musicPlayer/MusicPlayer.scss";
+@use "./MusicPlayer.scss";
 </style>

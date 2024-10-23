@@ -16,11 +16,11 @@
 </template>
 
 <script lang="ts">
-import Component from "@/app/components/date/Date";
+import Component from "./Date";
 const components = new Component();
 export default components.vue();
 </script>
 
 <style lang="scss" scoped>
-@import "@/app/components/date/Date.scss";
+@use "./Date.scss";
 </style>

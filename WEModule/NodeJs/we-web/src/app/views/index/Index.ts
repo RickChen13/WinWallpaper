@@ -9,7 +9,7 @@ import DoublePY from "@/app/components/doublePY/DoublePY.vue";
 import Monitor from "@/app/components/monitro/Monitro.vue";
 import NetWorkSeppkMonitor from "@/app/components/netWorkSeppkMonitor/NetWorkSeppkMonitor.vue";
 import MusicPlayer from "@/app/components/musicPlayer/MusicPlayer.vue";
-import MonitorTool from "@/app/tool/Monitor";
+import MonitorTool from "@/app/plugins/Monitor";
 
 class Component extends BaseViews {
   constructor() {
@@ -18,7 +18,6 @@ class Component extends BaseViews {
 
   public vue() {
     const vue = defineComponent({
-      name: "Index",
       setup() {
         const audioCanvas = ref<InstanceType<typeof AudioCanvas>>();
         const background = ref<InstanceType<typeof Background>>();
