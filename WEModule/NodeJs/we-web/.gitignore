@@ -27,5 +27,6 @@ coverage
 *.sln
 *.sw?
 
-./src/common
-./src/fast
+yarn.lock
+src/common
+src/fast
